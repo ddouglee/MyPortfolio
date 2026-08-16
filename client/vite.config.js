@@ -17,11 +17,18 @@ export default defineConfig({
         },
     },
 },
-
-  build: {
-    manifest: true,
-    rollupOptions: {
-      input: "./src/main.jsx",
+test: {
+  globals: true,
+  environment: 'jsdom',
+  setupFiles: './src/setup.js',
+  include: ['**/*.{test,spec}.{js,jsx}'],   // scan everything
+},
+build: {
+  manifest: true,
+  rollupOptions: {
+    input: {
+      main: './index.html',
     },
   },
+},
 });
